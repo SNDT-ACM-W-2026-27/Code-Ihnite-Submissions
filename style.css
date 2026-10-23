@@ -1,0 +1,77 @@
+
+body {
+    background-color: #171416;
+    background-image: url("goth-bg1.png");
+    text-align: center;
+}
+
+.calculator {
+    background-color: #292126;
+    width: 280px;
+    margin: 80px auto;
+    padding: 25px;
+    border: 2px solid #6e263d;
+    border-radius: 12px;
+}
+
+h2 {
+    color: #d8b6bd;
+    font-family: 'UnifrakturCook', Georgia, serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+
+#display {
+    width: 90%;
+    height: 45px;
+    margin-bottom: 18px;
+    padding: 5px;
+    background-color: #100e10;
+    color: #e8c8d0;
+    border: 1px #854057;
+    border-radius: 5px;
+    font-size: 23px;
+    text-align: right;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 9px;
+}
+
+button {
+    padding: 15px 8px;
+    font-size: 18px;
+    font-family: Georgia, serif;
+    background-color: #393037;
+    color: #eadde1;
+    border: 1px solid #65404e;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #633044;
+}
+
+#add,
+#subtract,
+#multiply,
+#divide {
+    background-color: #542536;
+    color: #ffe2e8;
+    border-color: #9a526a;
+}
+
+#clear {
+    background-color: #762b43;
+    color: white;
+}
+
+#equals {
+    background-color: #a34b66;
+    color: white;
+}
