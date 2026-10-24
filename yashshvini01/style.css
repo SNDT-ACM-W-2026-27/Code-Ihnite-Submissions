@@ -1,0 +1,151 @@
+:root {
+  --ink: #3b2f5c;
+  --soft: #7a6f9b;
+  --violet: #7c5cff;
+  --pink: #ff7eb6;
+  --peach: #ffb48a;
+  --card: rgba(255, 255, 255, 0.72);
+  --line: rgba(124, 92, 255, 0.2);
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: var(--ink);
+  text-align: center;
+  background: linear-gradient(160deg, #ffe3ef 0%, #e4dcff 50%, #d3efff 100%) fixed;
+}
+header { padding: 44px 16px 8px; }
+h1 {
+  margin: 0;
+  font-family: 'Righteous', sans-serif;
+  font-weight: 400;
+  font-size: clamp(44px, 14vw, 72px);
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--violet), var(--pink), var(--peach));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tagline { margin: 0; color: var(--soft); letter-spacing: 3px; }
+main { max-width: 520px; margin: 0 auto; padding: 20px 16px; }
+footer { padding: 24px 16px 36px; color: var(--soft); font-size: 13px; }
+.hint { color: var(--soft); margin: 8px 0 16px; }
+
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tile {
+  padding: 24px 10px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(124, 92, 255, 0.12);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.tile:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(124, 92, 255, 0.2); }
+.icon { display: block; font-size: 38px; margin-bottom: 10px; }
+
+.panel {
+  padding: 24px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(124, 92, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+h2 { margin: 0 0 8px; font-family: 'Righteous', sans-serif; font-weight: 400; font-size: 26px; }
+
+.btn {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 14px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, var(--violet), var(--pink));
+  border: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(124, 92, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.1s, filter 0.15s;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:active { transform: scale(0.98); }
+.btn.ghost {
+  display: inline-block;
+  width: auto;
+  margin: 20px 0 0;
+  padding: 10px 22px;
+  font-size: 14px;
+  color: var(--violet);
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.15);
+}
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 2px; }
+
+.status { min-height: 3.4em; color: var(--violet); font-weight: 600; }
+
+.grid { display: grid; gap: 10px; margin: 16px auto; max-width: 320px; }
+.grid.three { grid-template-columns: repeat(3, 1fr); }
+.cell {
+  aspect-ratio: 1;
+  padding: 0;
+  font: inherit;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--ink);
+  background: #fff;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.15);
+  cursor: pointer;
+}
+.cell:disabled { cursor: default; }
+.cell.x { color: var(--violet); }
+.cell.o { color: var(--pink); }
+.cell.win { background: linear-gradient(135deg, #ece6ff, #ffe0ee); }
+
+.row { display: flex; gap: 10px; }
+.row .btn { font-size: 14px; padding: 14px 4px; }
+
+.field {
+  width: 100%;
+  margin: 12px 0 4px;
+  padding: 14px;
+  font: inherit;
+  font-size: 22px;
+  text-align: center;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 18px;
+}
+.field:focus { outline: none; border-color: var(--violet); }
+
+.arena {
+  position: relative;
+  height: 280px;
+  margin: 16px 0;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px dashed var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.target {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0 16%, var(--pink) 18% 42%, #fff 44% 58%, var(--violet) 60%);
+  box-shadow: 0 4px 12px rgba(124, 92, 255, 0.35);
+  cursor: crosshair;
+}
