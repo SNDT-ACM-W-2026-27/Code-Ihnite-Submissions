@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+        <title>Little By Little - Student Journal</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+       <h1>Little By Little - Student Journal</h1>
+       <p>Small steps. Real progress.</p>
+
+       <section id="calendar-section">
+        <h2>Your Progress Calendar</h2>
+        <p>Every little step deserves a place.</p>
+
+<div class="calendar-header">
+    <button id="prev-month"></button>
+    <h3 id="month-year"></h3>
+    <button id="next-month"></button>
+</div>
+
+<p id="monthly-progress">You've journaled on 0 days this month 🌱</p>
+<div id="calendar">
+</div>
+
+<p id="selected-date">Choose a date to begin.</p>
+ </section>
+
+       <section>
+        <h2>Today's Goals</h2>
+        <p>What small steps will you take today?</p>
+
+       <div class="goal-item">
+        <input type="checkbox"
+        id="complete-1">
+        <input type="text" id="goal-1"
+        placeholder="Goal 1">
+        </div>
+       <div class="goal-item">
+        <input type="checkbox"
+        id="complete-2">
+        <input type="text" id="goal-2"
+        placeholder="Goal 2">
+        </div>
+       <div class="goal-item">
+        <input type="checkbox"
+        id="complete-3">
+        <input type="text" id="goal-3"
+        placeholder="Goal 3">
+        </div>
+    <p id="progress-text">0 of 3 goals completed</p>
+     </section>
+
+     <section>
+        <h2>Daily Reflection</h2>
+        <p>What did you learn today?</p>
+        <textarea id="reflection" placeholder="Write your thought..."></textarea>
+     </section>
+
+     <section>
+        <h2>One Little Win</h2>
+        <p>What is one thing you're proud of today?</p>
+        <input type="text" id="little-win" placeholder="My little win was...">
+     <button id="save-button">Save My Progress</button>
+     <button id="clear-button">Clear This Day</button>
+     <p id="message"></p>
+    </section>
+  <script src="script.js"></script>
+    </body>
+</html>
