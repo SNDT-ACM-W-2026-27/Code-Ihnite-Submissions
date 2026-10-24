@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+}
+ body{
+    min-height: 100vh;
+    background: linear-gradient( -135deg,white #ffe2c4 #f5a29e #fbd2cf );   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("lily.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+}
+.container{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    color: #a95e58;
+    gap: 2em;
+    background-color: rgba(250, 240, 232, 0.8);
+    backdrop-filter: blur(6px); 
+    border-radius: 2em;
+    padding: 4em 3em; 
+
+}
+.title{
+    font-size: 5em; 
+
+}
+hr{
+    width: 100%;
+    background-color: beige;
+    height: 5px;
+    border-radius: 1em;
+    border: none;
+}
+.timer{ 
+    font-size: 6em;
+    font-weight: 700;
+
+}
+.button-wrapper{
+    display: flex;
+    gap: 2em;
+}
+button{
+    padding: 0.5em 1.5em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #f5a29e;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 1px;
+}
+button:hover{
+    transform: translateY(-10px);
+}
+#start{
+    background-color: #f5a29e;
+}
+#stop{
+    background-color: #f5a29e;
+}
+#reset{
+    background-color: #f5a29e;
+}
