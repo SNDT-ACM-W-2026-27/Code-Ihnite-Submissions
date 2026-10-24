@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESCAPE.EXE // DASHBOARD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0b0e14;
+      --card-bg: #161b22;
+      --border-color: #30363d;
+      --text-main: #e6edf3;
+      --text-dim: #8b949e;
+      --accent-cyan: #00f3ff;
+      --accent-blue: #0026ff;
+      --accent-pink: #f84480;
+      --accent-green: #3fff63;
+      --accent-yellow: #f2ff00;
+      --font-mono: 'Fira Code', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container { display: flex; align-items: center; gap: 0.75rem; }
+    .logo-badge { background-color: var(--accent-pink); color: #000; font-weight: 700; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; }
+    h1 { font-size: 1.25rem; color: var(--accent-cyan); text-shadow: 0 0 8px rgba(0, 243, 255, 0.4); letter-spacing: 1px; }
+
+    nav { display: flex; gap: 0.5rem; }
+    .nav-btn {
+      background: transparent; border: 1px solid var(--border-color); color: var(--text-dim);
+      padding: 0.5rem 1rem; font-family: inherit; font-size: 0.85rem; cursor: pointer; border-radius: 4px; transition: all 0.2s ease;
+    }
+    .nav-btn:hover { border-color: var(--accent-cyan); color: var(--text-main); }
+    .nav-btn.active { background-color: rgba(0, 243, 255, 0.1); border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+    main { flex: 1; padding: 2rem; max-width: 1200px; width: 100%; margin: 0 auto; }
+    .app-section { display: none; }
+    .app-section.active { display: block; }
+
+    /* SCRAPBOARD */
+    .scrapboard-controls {
+      display: flex; gap: 1rem; margin-bottom: 1.5rem; background-color: var(--card-bg);
+      padding: 1rem; border: 1px solid var(--border-color); border-radius: 6px; flex-wrap: wrap;
+    }
+    input, select, button { font-family: inherit; }
+    .scrapboard-controls input {
+      flex: 1; min-width: 200px; background-color: var(--bg-color); border: 1px solid var(--border-color);
+      color: var(--text-main); padding: 0.6rem 1rem; border-radius: 4px; outline: none;
+    }
+    .scrapboard-controls select { background: var(--bg-color); color: var(--text-main); border: 1px solid var(--border-color); padding: 0.6rem; border-radius: 4px; outline: none; }
+    .action-btn { background-color: var(--accent-cyan); color: #000; border: none; font-weight: 600; padding: 0.6rem 1.2rem; border-radius: 4px; cursor: pointer; }
+    .board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem; }
+    .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-cyan); padding: 1rem; border-radius: 6px; position: relative; word-break: break-word; }
+    .card .delete-btn { position: absolute; top: 0.5rem; right: 0.5rem; background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 1rem; }
+    .card .delete-btn:hover { color: var(--accent-pink); }
+    .card-content { margin-top: 0.5rem; font-size: 0.95rem; line-height: 1.4; }
+    .card-tag { font-size: 0.7rem; text-transform: uppercase; color: var(--text-dim); letter-spacing: 1px; }
+
+    /* POMODORO */
+    .timer-container { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem 2rem; text-align: center; max-width: 500px; margin: 2rem auto; }
+    .timer-display { font-size: 4.5rem; font-weight: 700; color: var(--accent-green); text-shadow: 0 0 15px rgba(0, 255, 102, 0.3); margin: 1.5rem 0; letter-spacing: 2px; }
+    .timer-controls { display: flex; justify-content: center; gap: 1rem; }
+    .timer-btn { background: transparent; border: 1px solid var(--accent-green); color: var(--accent-green); padding: 0.75rem 1.5rem; font-size: 0.9rem; font-weight: 600; border-radius: 4px; cursor: pointer; }
+    .timer-btn:hover { background-color: var(--accent-green); color: #000; }
+
+    /* WORDLE */
+    .wordle-container { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; max-width: 450px; margin: 0 auto; text-align: center; }
+    .wordle-grid { display: grid; grid-template-rows: repeat(6, 1fr); gap: 8px; margin: 1.5rem 0; }
+    .wordle-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .tile { width: 100%; height: 52px; border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; background-color: var(--bg-color); }
+    .tile.correct { background-color: rgba(0, 255, 102, 0.2); border-color: var(--accent-green); color: var(--accent-green); }
+    .tile.present { background-color: rgba(227, 179, 65, 0.2); border-color: var(--accent-yellow); color: var(--accent-yellow); }
+    .tile.absent { background-color: #21262d; border-color: #21262d; color: var(--text-dim); }
+    .wordle-input-container { display: flex; gap: 0.5rem; }
+    .wordle-input-container input { flex: 1; background-color: var(--bg-color); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.75rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 4px; text-align: center; outline: none; }
+    .status-msg { margin-top: 1rem; font-size: 0.9rem; min-height: 1.2rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <span class="logo-badge">EXE</span>
+      <h1>ESCAPE.EXE // SYSTEM DASHBOARD</h1>
+    </div>
+    <nav>
+      <button class="nav-btn active" onclick="switchTab(event, 'scrapboard')">[01] SCRAPBOARD</button>
+      <button class="nav-btn" onclick="switchTab(event, 'pomodoro')">[02] FOCUS TIMER</button>
+      <button class="nav-btn" onclick="switchTab(event, 'wordle')">[03] WORD DECRYPT</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="scrapboard" class="app-section active">
+      <div class="scrapboard-controls">
+        <input type="text" id="noteInput" placeholder="Enter system log / sticky note..." />
+        <select id="colorSelect">
+          <option value="var(--accent-cyan)">Cyan Accent</option>
+          <option value="var(--accent-pink)">Pink Accent</option>
+          <option value="var(--accent-green)">Green Accent</option>
+          <option value="var(--accent-yellow)">Yellow Accent</option>
+        </select>
+        <button class="action-btn" onclick="addNote()">+ ADD ENTRY</button>
+      </div>
+      <div class="board-grid" id="boardGrid">
+        <div class="card" style="border-left-color: var(--accent-cyan);">
+          <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
+          <span class="card-tag">LOG_01</span>
+          <div class="card-content">System booted successfully. Welcome to escape.exe environment.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pomodoro" class="app-section">
+      <div class="timer-container">
+        <span style="color: var(--text-dim); font-size: 0.8rem; letter-spacing: 2px;">SYS.FOCUS_PROTOCOL</span>
+        <div class="timer-display" id="timerDisplay">25:00</div>
+        <div class="timer-controls">
+          <button class="timer-btn" id="startBtn" onclick="toggleTimer()">START</button>
+          <button class="timer-btn" onclick="resetTimer()" style="border-color: var(--text-dim); color: var(--text-dim);">RESET</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="wordle" class="app-section">
+      <div class="wordle-container">
+        <span style="color: var(--accent-pink); font-size: 0.8rem; letter-spacing: 2px;">DECRYPT THE 5-LETTER SYSTEM CODE</span>
+        <div class="wordle-grid" id="wordleGrid"></div>
+        <div class="wordle-input-container">
+          <input type="text" id="guessInput" maxlength="5" placeholder="5-LETTER WORD" />
+          <button class="action-btn" onclick="submitGuess()" style="background-color: var(--accent-pink); color: #fff;">SUBMIT</button>
+        </div>
+        <div class="status-msg" id="statusMsg"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function switchTab(event, tabId) {
+      document.querySelectorAll('.app-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    let noteCount = 1;
+    function addNote() {
+      const input = document.getElementById('noteInput');
+      const color = document.getElementById('colorSelect').value;
+      if (!input.value.trim()) return;
+      noteCount++;
+      const grid = document.getElementById('boardGrid');
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.borderLeftColor = color;
+      card.innerHTML = `
+        <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
+        <span class="card-tag">LOG_0${noteCount}</span>
+        <div class="card-content">${input.value}</div>
+      `;
+      grid.appendChild(card);
+      input.value = '';
+    }
+
+    let timeLeft = 25 * 60;
+    let timerInterval = null;
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+      const secs = (timeLeft % 60).toString().padStart(2, '0');
+      document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
+    }
+
+    function toggleTimer() {
+      const btn = document.getElementById('startBtn');
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        btn.textContent = 'START';
+      } else {
+        btn.textContent = 'PAUSE';
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            updateTimerDisplay();
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            alert("Focus protocol completed!");
+            btn.textContent = 'START';
+          }
+        }, 1000);
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      timeLeft = 25 * 60;
+      updateTimerDisplay();
+      document.getElementById('startBtn').textContent = 'START';
+    }
+
+    const TARGET_WORD = "CYBER";
+    let currentAttempt = 0;
+    const MAX_ATTEMPTS = 6;
+
+    function initWordle() {
+      const grid = document.getElementById('wordleGrid');
+      grid.innerHTML = '';
+      for (let i = 0; i < MAX_ATTEMPTS; i++) {
+        const row = document.createElement('div');
+        row.className = 'wordle-row';
+        for (let j = 0; j < 5; j++) {
+          const tile = document.createElement('div');
+          tile.className = 'tile';
+          row.appendChild(tile);
+        }
+        grid.appendChild(row);
+      }
+    }
+
+    function submitGuess() {
+      const input = document.getElementById('guessInput');
+      const guess = input.value.toUpperCase();
+      const status = document.getElementById('statusMsg');
+
+      if (guess.length !== 5) {
+        status.textContent = "WARNING: Word must be 5 characters!";
+        status.style.color = "var(--accent-pink)";
+        return;
+      }
+
+      if (currentAttempt >= MAX_ATTEMPTS) return;
+
+      const rows = document.querySelectorAll('.wordle-row');
+      const currentRowTiles = rows[currentAttempt].children;
+
+      for (let i = 0; i < 5; i++) {
+        currentRowTiles[i].textContent = guess[i];
+        if (guess[i] === TARGET_WORD[i]) {
+          currentRowTiles[i].classList.add('correct');
+        } else if (TARGET_WORD.includes(guess[i])) {
+          currentRowTiles[i].classList.add('present');
+        } else {
+          currentRowTiles[i].classList.add('absent');
+        }
+      }
+
+      if (guess === TARGET_WORD) {
+        status.textContent = "ACCESS GRANTED: Override successful!";
+        status.style.color = "var(--accent-green)";
+        input.disabled = true;
+      } else {
+        currentAttempt++;
+        if (currentAttempt === MAX_ATTEMPTS) {
+          status.textContent = `SYSTEM LOCKOUT: Key was ${TARGET_WORD}`;
+          status.style.color = "var(--accent-pink)";
+          input.disabled = true;
+        } else {
+          status.textContent = `Attempt ${currentAttempt}/${MAX_ATTEMPTS}`;
+          status.style.color = "var(--text-dim)";
+        }
+      }
+      input.value = '';
+    }
+
+    initWordle();
+  </script>
+</body>
+</html>
