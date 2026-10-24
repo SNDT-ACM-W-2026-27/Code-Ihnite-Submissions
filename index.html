@@ -1,44 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Basic Floral Calculator</title>
-    <!-- Linking our external CSS styling file -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Glow Guard | Sunscreen Ingredient Checker</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
 
-    <!-- Main calculator container wrapper -->
-    <div class="calculator">
-        <h3 class="title">Floral Calculator</h3>
-        
-        <!-- Display screen to show numbers -->
-        <input type="text" id="display" readonly placeholder="0">
-        
-        <!-- Simple grid of buttons -->
-        <div class="button-grid">
-            <button class="btn clear-btn" onclick="clearScreen()">C</button>
-            <button class="btn operator-btn" onclick="appendValue('/')">/</button>
-            <button class="btn operator-btn" onclick="appendValue('')"></button>
-            <button class="btn operator-btn" onclick="appendValue('-')">-</button>
+  <!-- Opening Animation -->
+  <div id="introAnimation" class="intro-animation">
+    <div class="intro-sun">☀</div>
+    <h1 class="intro-title">GLOW GUARD</h1>
+    <p class="intro-subtitle">Your skin. Your shield.</p>
+    <div class="intro-shield">✓</div>
+  </div>
 
-            <button class="btn" onclick="appendValue('7')">7</button>
-            <button class="btn" onclick="appendValue('8')">8</button>
-            <button class="btn" onclick="appendValue('9')">9</button>
-            <button class="btn operator-btn" onclick="appendValue('+')">+</button>
+  <!-- Cursor Glow -->
+  <div id="cursorGlow"></div>
 
-            <button class="btn" onclick="appendValue('4')">4</button>
-            <button class="btn" onclick="appendValue('5')">5</button>
-            <button class="btn" onclick="appendValue('6')">6</button>
-            <button class="btn equal-btn" onclick="calculateResult()">=</button>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">☀ Glow Guard</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#checker">Ingredient Checker</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
-            <button class="btn" onclick="appendValue('1')">1</button>
-            <button class="btn" onclick="appendValue('2')">2</button>
-            <button class="btn" onclick="appendValue('3')">3</button>
-            <button class="btn" onclick="appendValue('0')">0</button>
+  <!-- Hero Section -->
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">YOUR SKINCARE COMPANION</p>
+        <h1>Know What's in Your Sunscreen.</h1>
+        <p>
+          Explore sunscreen ingredients and identify selected ingredients
+          that may cause irritation or sensitivity.
+        </p>
+        <a href="#checker" class="hero-button">Check Ingredients</a>
+      </div>
+    </section>
+
+    <!-- Ingredient Checker -->
+    <section id="checker" class="checker-section">
+      <div class="section-heading">
+        <p class="eyebrow">SMART INGREDIENT REVIEW</p>
+        <h2>Your Sunscreen, Under the Lens</h2>
+        <p>
+          Upload a photo of the ingredient label and enter the ingredient
+          list to receive a basic educational review.
+        </p>
+      </div>
+
+      <div class="checker-card">
+
+        <div class="form-group">
+          <label for="product">Sunscreen Product Name</label>
+          <input
+            type="text"
+            id="product"
+            placeholder="Enter the product name"
+          >
         </div>
-    </div>
 
-    <!-- Linking our external JavaScript logic file -->
-    <script src="script.js"></script>
+        <div class="form-group">
+          <label for="photo">Upload Ingredient Label Photo</label>
+          <input
+            type="file"
+            id="photo"
+            accept="image/*"
+          >
+
+          <div class="preview-container">
+            <img
+              id="preview"
+              class="hidden"
+              alt="Uploaded sunscreen ingredient label"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ingredients">Ingredient List</label>
+          <textarea
+            id="ingredients"
+            rows="6"
+            placeholder="Type or paste the ingredients printed on the sunscreen label..."
+          ></textarea>
+          <p class="helper-text">
+            The photo is only previewed. Please type the ingredients manually;
+            automatic text recognition is not included yet.
+          </p>
+        </div>
+
+        <button type="button" id="analyze">
+          Analyze Ingredients
+        </button>
+
+        <!-- Results -->
+        <div id="result" class="result-card hidden">
+          <h2 id="resultTitle">Ingredient Review</h2>
+
+          <div class="score-circle">
+            <span id="score">--/5</span>
+          </div>
+
+          <p id="summary"></p>
+
+          <h3>Ingredient Observations</h3>
+          <ul id="findings"></ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <p class="eyebrow">ABOUT GLOW GUARD</p>
+      <h2>Understand Ingredients. Make Informed Choices.</h2>
+      <p>
+        Glow Guard is an educational project designed to help users review
+        selected sunscreen ingredients and learn about possible irritation
+        concerns.
+      </p>
+      <p>
+        The checker is a basic demonstration, not a scientifically validated
+        safety score or medical assessment. Ingredient names alone cannot
+        determine whether a finished product is safe or suitable for everyone.
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 Glow Guard | Learn about your skincare ingredients.</p>
+  </footer>
+
 </body>
 </html>
+
+
+
