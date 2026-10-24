@@ -1,0 +1,104 @@
+*, *::before, *::after{
+	box-sizing: border-box; /* (Prevents padding from expanding element widths) */
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+body{
+	/* color: #a8fff7; Save for button color */
+	color: #FFF5F5;
+	font-family: Roboto , Arial;
+	background-color: #570008;
+	/* background-color: #2D0007; */
+	margin: 0;
+	padding-top: 50px;
+	background-image: url("../Portfolio-img.png/Background-image.jpg");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: contain;
+	cursor: pointer;
+}
+.head{
+	display: flex;
+	/* background-color: #1E030A; */
+	position: fixed;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 60px;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.Home:hover ,
+.About:hover ,
+.Education:hover ,
+.Skills:hover ,
+.Contact:hover{
+	background-color: #8d0e30;
+	width: 55px;
+	height: 30px;
+}
+.Education:hover{
+	width: 75px;
+}
+.main{
+	padding-top: 80px;
+	padding-left: 80px;
+}
+.Intro{
+	font-size: 35px;
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+.Define{
+	color: #00D2D2;
+	padding-top: 12px;
+	margin-top: 0;
+	font-size: 25px;
+}
+.Aboutme{
+	font-size: 15px;
+}
+.Aboutme .tagline{
+	margin-top: 10px;
+	font-size: 20px;
+}
+.Explore ,
+.Contactme{
+	border: none;
+	background-color: #a8fff7;
+	padding: 12px;
+	border-radius: 8px;
+	margin-right: 14px;
+	transition: background-color 0.2s ease, transform 0.1s ease;
+	cursor: pointer;
+}
+.Explore:hover ,
+.Contactme:hover{
+	background-color: #20B2AA;
+}
+.Explore:active
+.Contactme:active{
+	background-color: #75ffd1;
+	transform: scale(0.97); /* Tiny click animation */
+}
+.bottom{
+	padding-top: 120px;
+	margin-top: 80px;
+	display: flex;
+	flex-direction: row;
+}
+.github-reference ,
+.linkedin-reference ,
+.github-reference-img ,
+.linkedin-reference-img{
+	mix-blend-mode: multiply;
+	width: 40px;
+	height: 40px;
+	margin-right: 14px;
+}

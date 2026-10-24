@@ -1,0 +1,70 @@
+*, *::before, *::after{
+	box-sizing: border-box; /* (Prevents padding from expanding element widths) */
+}
+html{
+	scroll-behavior: smooth;
+}
+section{
+	scroll-margin-top: 90px;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+body{
+	/* color: #f7a1a1; Save for font color*/
+	/* background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('../Portfolio-img.png/Background-img1.jpg') no-repeat center center fixed;  (Darkens the background img)*/
+	font-family: Roboto , Arial;
+	background-color: #151515;
+	margin: 0;
+	padding-top: 70px;
+	padding-left: 25px;
+	background-image: url("../Portfolio-img.png/Background-img1.jpg");
+	background-repeat: no-repeat;
+	background-position: right;
+	background-size: cover;
+	cursor: pointer;
+	color: #ccc;
+}
+.head{
+	display: flex;
+	/* background-color: #1E030A; */
+	position: fixed;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 60px;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.Home:hover ,
+.About:hover ,
+.Education:hover ,
+.Skills:hover ,
+.Contact:hover{
+	background-color: #41373c;
+	/* color: #f1f1cc; */
+	color: cyan;
+	width: 55px;
+	height: 30px;
+}
+.Education:hover{
+	width: 75px;
+}
+h1{
+	text-align: center;
+	padding: 12px;
+	color: teal;
+	/* color: cyan; */
+}
+.git-icon ,
+.link-icon{
+	display: inline;
+	width: 50px;
+	mix-blend-mode: multiply;
+}
