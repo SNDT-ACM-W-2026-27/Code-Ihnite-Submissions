@@ -18,8 +18,5 @@ A dynamic, professional personal portfolio website featuring real-time time-base
 
 ## 🧰 Tech Stack
 - **Frontend:** HTML5, CSS3, JavaScript (ES6 DOM Manipulation & Date/Time API)
-<<<<<<< HEAD
 - **Deployment:** GitHub Pages
-=======
 - **Deployment:** GitHub Pages
->>>>>>> f5194426378fb1bd9dbc326a8cf9cce75bf0f578
