@@ -1,0 +1,274 @@
+/*The overall look of my webpage */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF8F0;
+    color: #3D3532;
+    margin: 0;
+    padding: 30px;
+}
+
+/*The main heading */
+h1 {text-align: center;
+color: #8B5E83;
+ }
+
+ /*The smaller heading */
+ h2 {
+    color: #8B5E83; 
+}
+
+/*Each section of my journal */
+section {
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+}
+
+/*Styling the goal inputs and reflection box */
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #E5D9E8;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/*Giving the reflection box some writing space */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/*Adding a soft colour when someone clicks a field */
+input:focus,
+textarea:focus {
+    outline: 2px solid #C9A5C9;
+    border-color: #8B5E83;
+}
+
+/*Keeping the journal neat and centered and all good */
+body {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/*Making section headings stand out and look prettier */
+section h2 {
+    margin-top: 0;
+}
+
+/*Adding a little space below the main title */
+h1 {
+    margin-bottom: 10px;
+}
+
+/*Softening the subtitle */
+body > p {
+    text-align: center;
+    color: #82747F;
+    margin-bottom: 35px;
+}
+
+/*Keeping the goal checkbox beside its text field */
+.goal-item {
+    display: flex;
+    align-items: center;
+gap: 10px;
+margin: 10px 0;
+}
+
+.goal-item input[type="checkbox"] {
+width: auto;
+margin: 0;
+flex-shrink: 0;
+}
+
+.goal-item input[type="text"] {
+    flex: 1;
+    min-width: 0;
+}
+
+/*Show which goals are completed */
+.goal-item.completed input[type="text"] {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Calendar heading and month navigation */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.calendar-header h3 {
+    color: #8B5E83;
+    text-align: center;
+    margin: 0;
+}
+
+/* Calendar navigation buttons */
+.calendar-header button {
+    background-color: #8B5E83;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+/* Space where the dates will appear */
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+/* Individual calendar dates */
+.calendar-day {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #E5D9E8;
+    border-radius: 8px;
+    background-color: #FFF8FC;
+    color: #3D3532;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Highlight the date you select */
+.calendar-day.selected {
+    background-color: #8B5E83;
+    color: white;
+}
+
+/* Mark dates that contain saved journal entries */
+.calendar-day.has-entry {
+    border: 2px solid #C9A5C9;
+    font-weight: bold;
+}
+
+/* Smooth interactions throughtout the journal */
+button,
+.calendar-day, 
+input[type="checkbox"] {
+    transition:
+    transform 0.18s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Buttons gently respond to clicks */
+button:active {
+    transform: scale(0.94);
+}
+
+/* Calendar dates lift when hovered */
+.calendar-day:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 12px rgba(139, 94, 131, 0.16);
+}
+
+/* A soft glow around the selected date */
+.calendar-day.selected {
+    background-color: #8B5E83;
+    color: white;
+    box-shadow: 0 0 0 3px #EAD8EB;
+    transform: scale(1.05);
+}
+
+/* A gentle hover effect on navigation buttons */
+.calendar-header button:hover {
+    background-color: #70466A;
+    box-shadow: 0 4px 10px rgba(139, 94, 131, 0.2);
+}
+
+/* Give the save button a little personality */
+#save-button {
+    background-color: #8B5E83;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+#save-button:hover {
+    background-color: #70466A;
+    box-shadow: 0 5px 14px rgba(139, 94, 131, 0.22);
+}
+
+/* A little celebration when progress is save */
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+#save-button.saved {
+    animation: savePop 0.35s ease;
+    box-shadow: 0 0 0 4px #EAD8EB;
+}
+
+#message {
+    color: #8B5E83;
+    font-weight: bold;
+    transition: opacity 0.2s ease;
+}
+
+/* Tiny dot for days with saved journal entries */
+.calendar-day.has-entry {
+    position: relative;
+    border: 2px solid #C9A5C9;
+}
+
+.calendar-day.has-entry::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #8B5E83;
+}
+
+/* Keep the dot visible on selected dates */
+.calendar-day.selected.has-entry::after {
+    background-color: white;
+}
+
+/* Monthly progress summary */
+#monthly-progress {
+    text-align: center;
+    color: #8B5E83;
+    background-color: #FFF8FC;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 12px 0 18px;
+}
+
+#clear-button {
+    background-color: #FFF8FC;
+    color: #8B5E83
+    border: 1px solid #C9A5C9;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+#clear-button:hover {
+    background-color: #F2E5F2;
+    transform: translateY(-2px); 
+}
