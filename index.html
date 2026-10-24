@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic Floral Calculator</title>
+    <!-- Linking our external CSS styling file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main calculator container wrapper -->
+    <div class="calculator">
+        <h3 class="title">Floral Calculator</h3>
+        
+        <!-- Display screen to show numbers -->
+        <input type="text" id="display" readonly placeholder="0">
+        
+        <!-- Simple grid of buttons -->
+        <div class="button-grid">
+            <button class="btn clear-btn" onclick="clearScreen()">C</button>
+            <button class="btn operator-btn" onclick="appendValue('/')">/</button>
+            <button class="btn operator-btn" onclick="appendValue('')"></button>
+            <button class="btn operator-btn" onclick="appendValue('-')">-</button>
+
+            <button class="btn" onclick="appendValue('7')">7</button>
+            <button class="btn" onclick="appendValue('8')">8</button>
+            <button class="btn" onclick="appendValue('9')">9</button>
+            <button class="btn operator-btn" onclick="appendValue('+')">+</button>
+
+            <button class="btn" onclick="appendValue('4')">4</button>
+            <button class="btn" onclick="appendValue('5')">5</button>
+            <button class="btn" onclick="appendValue('6')">6</button>
+            <button class="btn equal-btn" onclick="calculateResult()">=</button>
+
+            <button class="btn" onclick="appendValue('1')">1</button>
+            <button class="btn" onclick="appendValue('2')">2</button>
+            <button class="btn" onclick="appendValue('3')">3</button>
+            <button class="btn" onclick="appendValue('0')">0</button>
+        </div>
+    </div>
+
+    <!-- Linking our external JavaScript logic file -->
+    <script src="script.js"></script>
+</body>
+</html>

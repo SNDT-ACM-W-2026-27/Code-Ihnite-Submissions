@@ -1,0 +1,78 @@
+
+body {
+    background-color: #ffe5ec; /* Light pastel pink background */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Calculator main frame outline border */
+.calculator {
+    background-color: #ffffff;
+    width: 300px;
+    padding: 20px;
+    border: 3px solid #ff4d6d; /* Red border outline */
+    border-radius: 20px; /* Slightly curved rounded box */
+    text-align: center;
+}
+
+.title {
+    color: #cc0022; /* Pure rose red text */
+    margin-top: 0;
+}
+
+/* Calculation input field display bar box */
+#display {
+    width: 90%;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    padding: 5px;
+    margin-bottom: 20px;
+    background-color: #fff0f3;
+    border: 2px solid #ffccd5;
+    border-radius: 10px;
+    color: #cc0022;
+}
+
+/* Align buttons evenly in 4 side-by-side columns */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Default styling for standard number button keys */
+.btn {
+    background-color: #ffe5ec; /* Soft base pink button */
+    color: #cc0022; /* Basic red text color */
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Math operation arithmetic calculation signs design layout */
+.btn.operator-btn {
+    background-color: #cc0022; /* Solid dark red keys */
+    color: #ffffff; /* Plain white signs */
+}
+
+/* Clear reset key utility style properties */
+.btn.clear-btn {
+    background-color: #ff85a1;
+    color: #ffffff;
+}
+
+/* Evaluation equal to function action execution key */
+.btn.equal-btn {
+    background-color: #ff4d6d;
+    color: #ffffff;
+    grid-row: span 2; /* Extends vertically through blank row grid blocks */
+    height: 100%;
+}
