@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 Eat and Repeat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>404 Eat and Repeat</h1>
+    <p>Have leftovers? Let's turn them into something delicious!</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#mission">Our Mission</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<main>
+
+<section class="card" id="home">
+    <h2>What Ingredients Do You Have?</h2>
+    <p>Select the ingredients available in your kitchen.</p>
+
+<form id="ingredientForm">
+
+    <h3>Vegetables</h3>
+    <div class="ingredients">
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="tomato">
+            <span class="emoji" role="img" aria-label="Tomato">🍅</span>
+            Tomatoes
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="onion">
+            <span class="emoji" role="img" aria-label="Onion">🧅</span>
+            Onions
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="spinach">
+            <span class="emoji" role="img" aria-label="Spinach">🍃</span>
+            Spinach
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="potato">
+            <span class="emoji" role="img" aria-label="Potato">🥔</span>
+            Potatoes
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="carrot">
+            <span class="emoji" role="img" aria-label="Carrot">🥕</span>
+            Carrots
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="cabbage">
+            <span class="emoji" role="img" aria-label="Cabbage">🥬</span>
+            Cabbage
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="capsicum">
+            <span class="emoji" role="img" aria-label="Capsicum">🫑</span>
+            Capsicum
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="coriander">
+            <span class="emoji" role="img" aria-label="Coriander">🌿</span>
+            Coriander
+        </label>
+
+    </div>
+
+    <h3>Other Ingredients</h3>
+    <div class="ingredients">
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="rice">
+            <span class="emoji" role="img" aria-label="Rice">🍚</span>
+            Rice
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="bread">
+            <span class="emoji" role="img" aria-label="Bread">🍞</span>
+            Bread
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="paneer">
+            <span class="emoji" role="img" aria-label="Paneer">🧀</span>
+            Paneer
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="egg">
+            <span class="emoji" role="img" aria-label="Eggs">🥚</span>
+            Eggs
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="milk">
+            <span class="emoji" role="img" aria-label="Milk">🥛</span>
+            Milk
+        </label>
+
+        <label class="ingredient">
+            <input type="checkbox" name="ingredient" value="wheat">
+            <span class="emoji" role="img" aria-label="Wheat">🌾</span>
+            Wheat Flour
+        </label>
+
+    </div>
+
+    <button type="submit">Find Recipes</button>
+    <button type="reset">Clear Selection</button>
+</form>
+
+<div id="results"></div>
+
+</section>
+
+<section class="card" id="recipeSection" hidden>
+    <button id="backButton" type="button">Back to Recipes</button>
+    <div id="procedure"></div>
+</section>
+
+<section class="card" id="about">
+    <h2>About Us</h2>
+    <p>
+        404 Eat and Repeat is a food waste management project
+        that helps people use leftover ingredients creatively.
+        Select what you have and discover ways to reduce food waste.
+    </p>
+</section>
+
+<section class="card" id="mission">
+    <h2>Our Mission</h2>
+    <p>
+        Our mission is to reduce food waste, save money,
+        encourage sustainable cooking, and make the best use
+        of every ingredient in our kitchen.
+    </p>
+</section>
+
+<section class="card" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: foodrescue@example.com</p>
+    <p>Let's work together to reduce food waste!</p>
+</section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 404 Eat and Repeat | Reduce Waste, Reuse Ingredients!</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

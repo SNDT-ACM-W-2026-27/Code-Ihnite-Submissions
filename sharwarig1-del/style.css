@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f8e9;
+    margin: 0;
+    color: #263628;
+}
+
+header {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+nav {
+    background-color: #1b5e20;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 12px;
+    font-weight: bold;
+}
+
+main {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.card {
+    background-color: white;
+    padding: 22px;
+    margin-bottom: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px #00000015;
+}
+
+.ingredients {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+}
+
+.ingredient {
+    border: 1px solid #d7e6d0;
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fbfff8;
+}
+
+.ingredient img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+/* Emoji icons: same box size as the image icons */
+.ingredient .emoji {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+/* Emoji motion */
+.ingredient {
+    cursor: pointer;
+}
+
+.ingredient .emoji {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Hover: grow and wiggle */
+.ingredient:hover .emoji {
+    transform: scale(1.3);
+    animation: wiggle 0.5s ease;
+}
+
+/* Checked: pop and stay a little bigger */
+.ingredient input:checked + .emoji {
+    transform: scale(1.25);
+    animation: pop 0.45s ease;
+}
+
+@keyframes wiggle {
+    0%   { transform: rotate(0deg) scale(1.3); }
+    25%  { transform: rotate(-14deg) scale(1.3); }
+    50%  { transform: rotate(12deg) scale(1.3); }
+    75%  { transform: rotate(-8deg) scale(1.3); }
+    100% { transform: rotate(0deg) scale(1.3); }
+}
+
+@keyframes pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.7) translateY(-6px); }
+    70%  { transform: scale(0.9); }
+    100% { transform: scale(1.25); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ingredient .emoji,
+    .ingredient:hover .emoji,
+    .ingredient input:checked + .emoji {
+        animation: none;
+        transition: none;
+    }
+}
+
+button {
+    background-color: #388e3c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 10px 6px 0 0;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #1b5e20;
+}
+
+.recipe-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: #e8f5e9;
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.recipe-button:hover {
+    background: #c8e6c9;
+}
+
+#results, #procedure {
+    margin-top: 18px;
+    line-height: 1.8;
+}
+
+#procedure h3 {
+    color: #2e7d32;
+}
+
+footer {
+    text-align: center;
+    background-color: #1b5e20;
+    color: white;
+    padding: 18px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Buttons pop and move */
+button {
+  cursor: pointer;
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease,
+              background-color 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18);
+}
+
+button:active {
+  transform: scale(0.94);
+}
+
+/* Ingredient card movement */
+.ingredient-card {
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.ingredient-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+}
+
+/* Selected ingredient */
+.ingredient-card.selected {
+  background-color: #e8f5e9;
+  border: 2px solid #2e7d32;
+}
+
+/* Recipe entrance animation */
+.recipe-card {
+  animation: popIn 0.4s ease both;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
